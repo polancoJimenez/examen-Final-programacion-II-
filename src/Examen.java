@@ -15,15 +15,60 @@ public class Examen {
                 int temperatura = scanner.nextInt();
             }
         }
+
+        System.out.println("1 => temperaturas Altas");
+        int opcion = scanner.nextInt();
+        switch (opcion) {
+            case 1:
+                contarTemperaturasAltas(int[][] temperaturas);
+                break;
+            case 2: 
+                promedioTemperaturasBajas(int[][] temperaturas);
+                break;
+            default:
+                System.out.println("opcion no valida");
+        }
     }
 
     public static int contarTemperaturasAltas(int[][] matriz){
 
-        for(int numFila = 0; numFila < matriz;numFila++){
+        int contador = 0;
+        for(int numFila = 0; numFila < 4;numFila++){
             for(int numColumna = 0; numColumna < 5;numColumna++){
+                if(matriz[numFila][numColumna] > 60){
+                    contador++;
+                }
                 
             }
         }
-        return ;
+        return contador;
+    }
+
+    public static double promedioTemperaturasBajas(int[][] matriz){
+
+        int contador = 0;
+        int promedio = 1;
+        for(int numFila = 0; numFila < 4;numFila++){
+            for(int numColumna = 0; numColumna < 5;numColumna++){
+                if(matriz[numFila][numColumna] < 30){
+                    promedio ++;
+                    contador += matriz[numFila][numColumna];
+                }
+            }
+            promedio /= contador;
+        }
+        return promedio;
+    }
+
+    public static void imprimirTemperaturasPeligrosas(int[][] matriz){
+
+        int tempeCritica = 0;
+        for(int numFila = 0; numFila < 4;numFila++){
+            for(int numColumna = 0; numColumna < 5;numColumna++){
+                if(matriz[numFila][numColumna] > 75){
+                    System.out.println("temperatura critica en " + [numFila][numColumna] + ": la temperatura es de ");
+                }
+            }
+        }
     }
 }
